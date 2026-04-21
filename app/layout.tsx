@@ -1,30 +1,33 @@
-import { Geist, Geist_Mono } from "next/font/google"
+import type { ReactNode } from "react"
+
+import { Archivo_Black, Space_Grotesk } from "next/font/google"
 
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'})
-
-const fontMono = Geist_Mono({
+const archivoBlack = Archivo_Black({
   subsets: ["latin"],
-  variable: "--font-mono",
-})
+  weight: "400",
+  variable: "--font-head",
+  display: "swap",
+});
+
+const space = Space_Grotesk({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: {
+  children: ReactNode
+}) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, "font-sans", geist.variable)}
-    >
-      <body>
-        <ThemeProvider>{children}</ThemeProvider>
+    <html lang="en">
+      <body className={`${archivoBlack.variable} ${space.variable}`}>
+        {children}
       </body>
     </html>
-  )
+  );
 }

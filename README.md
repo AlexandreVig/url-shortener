@@ -1,21 +1,15 @@
 # Next.js template
 
-This is a Next.js template with shadcn/ui.
+This is a Next.js template using RetroUI components via the shadcn registry.
 
-## Adding components
-
-To add components to your app, run the following command:
+## Adding RetroUI components
 
 ```bash
-npx shadcn@latest add button
+bunx shadcn@latest add @retroui/button
 ```
 
-This will place the ui components in the `components` directory.
-
-## Using components
-
-To use the components in your app, import them as follows:
+## Using RetroUI components
 
 ```tsx
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/retroui/Button"
 ```
