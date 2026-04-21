@@ -8,6 +8,12 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
+  "routes": [
+    {
+      "pattern": "url.avigneau.dev/*",
+      "zone_name": "avigneau.dev"
+    }
+  ],
   "d1_databases": [
     {
       "binding": "DB",
