@@ -1,0 +1,2 @@
+# Used by OpenNext when running locally under Wrangler
+NEXTJS_ENV=development

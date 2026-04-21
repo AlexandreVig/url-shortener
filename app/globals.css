@@ -52,3 +52,12 @@
   --destructive-foreground: #fff;
   --border: #000;
 }
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fefce8;
+  background-image: url(/box_bg.svg);
+  margin: 0;
+  font-family: Space Grotesk, cursive;
+}
