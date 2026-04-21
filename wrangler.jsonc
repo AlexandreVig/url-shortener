@@ -7,5 +7,14 @@
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "url-shortener",
+      "database_id": "e8d4c162-f289-4ced-bd01-0e660bc797da",
+      "preview_database_id": "e8d4c162-f289-4ced-bd01-0e660bc797da",
+      "migrations_dir": "migrations"
+    }
+  ]
 }
