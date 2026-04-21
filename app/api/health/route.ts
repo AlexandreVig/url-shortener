@@ -1,22 +1,19 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare"
+import type { CloudflareEnv } from "@/cloudflare-env"
 
 export async function GET(request: Request) {
-  let cloudflare = null as null | {
-    env: unknown
-    cf: unknown
-  }
-
+  let hasCloudflareContext = false
   let hasD1Binding = false
   let d1QueryOk = null as null | boolean
 
   try {
-    const { env, cf } = getCloudflareContext()
-    cloudflare = { env, cf }
+    const { env } = getCloudflareContext() as { env: CloudflareEnv }
+    hasCloudflareContext = true
 
-    const db = (env as any)?.DB
-    hasD1Binding = !!db && typeof db.prepare === "function"
+    const db = env.DB
+    hasD1Binding = !!db
 
-    if (hasD1Binding) {
+    if (db) {
       await db.prepare("SELECT 1 as ok").first()
       d1QueryOk = true
     } else {
@@ -29,7 +26,7 @@ export async function GET(request: Request) {
   return Response.json({
     ok: true,
     method: request.method,
-    hasCloudflareContext: cloudflare !== null,
+    hasCloudflareContext,
     hasD1Binding,
     d1QueryOk,
   })
