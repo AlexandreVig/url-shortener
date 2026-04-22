@@ -39,20 +39,6 @@ Example API route:
 
 - `GET /api/health`
 
-### Note about Cloudflare Pages
+## License
 
-Cloudflare's current recommended approach for full-stack Next.js (SSR + API
-routes) is deploying to **Workers** via OpenNext. Pages is great for static
-sites, but for this setup you should deploy the app as a Worker.
-
-## Adding RetroUI components
-
-```bash
-bunx shadcn@latest add @retroui/button
-```
-
-## Using RetroUI components
-
-```tsx
-import { Button } from "@/components/retroui/Button"
-```
+[MIT](./LICENSE) © Alexandre Vigneau

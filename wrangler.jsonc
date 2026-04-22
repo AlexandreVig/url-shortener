@@ -23,19 +23,16 @@
       "migrations_dir": "migrations"
     }
   ],
-  "unsafe": {
-    "bindings": [
-      {
-        "name": "RATE_LIMITER",
-        "type": "ratelimit",
-        "namespace_id": "1001",
-        "simple": {
-          "limit": 10,
-          "period": 60
-        }
+  "ratelimits": [
+    {
+      "name": "RATE_LIMITER",
+      "namespace_id": "1001",
+      "simple": {
+        "limit": 10,
+        "period": 60
       }
-    ]
-  },
+    }
+  ],
   "observability": {
     "logs": {
       "enabled": true,
