@@ -60,12 +60,12 @@ export default function Page() {
           <span className="inline-block -rotate-12">🖐️</span>
         </Text>
 
-        <Card className="my-8 text-left sm:my-12 md:my-16">
+        <Card className="my-8 w-full max-w-full md:max-w-2xl text-left sm:my-12 md:my-16">
           <Card.Header>
             <Card.Title>Paste your url</Card.Title>
-            <Card.Content className="flex w-2xl flex-col gap-8">
+            <Card.Content className="flex w-full flex-col gap-8">
               <div className="flex flex-col gap-2">
-                <div className="flex gap-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
                   <Input
                     className="flex-1"
                     placeholder="https://example.com/very/long/url"
@@ -76,7 +76,7 @@ export default function Page() {
                     onKeyDown={(e) => e.key === "Enter" && handleShorten()}
                   />
                   <Button
-                    className="w-fit"
+                    className="w-full sm:w-fit"
                     disabled={isLoading || !url.trim()}
                     onClick={handleShorten}
                   >
@@ -89,15 +89,13 @@ export default function Page() {
               </div>
               <div className="mx-auto w-full max-w-96 shadow shadow-primary">
                 <div className="group text-md relative flex items-center bg-black/90 py-2 pl-4 font-mono">
-                  <div className="flex-1 overflow-hidden whitespace-nowrap">
-                    <div className="overflow-hidden text-ellipsis">
-                      <span className={shortUrl === "" ? "text-gray-600" : "text-primary"}>{shortUrl === "" ? EXAMPLE_SHORT_URL : shortUrl}</span>
-                    </div>
+                  <div className="min-w-0 flex-1">
+                    <span className={`block overflow-hidden text-ellipsis whitespace-nowrap ${shortUrl === "" ? "text-gray-600" : "text-primary"}`}>{shortUrl === "" ? EXAMPLE_SHORT_URL : shortUrl}</span>
                   </div>
                   <CopyToClipboardButton
                     value={shortUrl || null}
                     disabled={shortUrl === ""}
-                    className="mr-2 shrink-0 cursor-pointer disabled:cursor-not-allowed p-1 text-gray-400 disabled:text-gray-600 transition-colors hover:text-white"
+                    className="mr-2 shrink-0 cursor-pointer disabled:cursor-not-allowed p-2 text-gray-400 disabled:text-gray-600 transition-colors hover:text-white"
                   />
                 </div>
               </div>
