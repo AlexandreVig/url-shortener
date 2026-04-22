@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 @theme {
   --font-head: var(--font-head);
@@ -59,5 +60,4 @@ body {
   background-color: #fefce8;
   background-image: url(/box_bg.svg);
   margin: 0;
-  font-family: Space Grotesk, cursive;
 }

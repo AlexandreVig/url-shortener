@@ -24,7 +24,7 @@ export async function GET(request: Request) {
   }
 
   return Response.json({
-    ok: true,
+    ok: hasD1Binding && d1QueryOk === true,
     method: request.method,
     hasCloudflareContext,
     hasD1Binding,
