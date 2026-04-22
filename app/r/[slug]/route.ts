@@ -1,5 +1,6 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare"
 import type { CloudflareEnv } from "@/cloudflare-env"
+import { notFound } from "next/navigation"
 
 export async function GET(
   _request: Request,
@@ -25,7 +26,7 @@ export async function GET(
     .first<{ url: string }>()
 
   if (!row) {
-    return new Response("Not Found", { status: 404 })
+    notFound()
   }
 
   return Response.redirect(row.url, 301)
