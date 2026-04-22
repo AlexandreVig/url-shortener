@@ -78,6 +78,18 @@ export async function POST(request: Request) {
     )
   }
 
+  const rateLimiter = env?.RATE_LIMITER
+  if (rateLimiter) {
+    const ip = request.headers.get("CF-Connecting-IP") ?? "unknown"
+    const { success } = await rateLimiter.limit({ key: ip })
+    if (!success) {
+      return Response.json(
+        { ok: false, error: "Too many requests" },
+        { status: 429 },
+      )
+    }
+  }
+
   let body: unknown
   try {
     body = await request.json()

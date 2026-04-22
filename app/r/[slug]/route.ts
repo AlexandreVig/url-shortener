@@ -3,7 +3,7 @@ import type { CloudflareEnv } from "@/cloudflare-env"
 import { notFound } from "next/navigation"
 
 export async function GET(
-  _request: Request,
+  request: Request,
   { params }: { params: Promise<{ slug: string }> },
 ) {
   const { slug } = await params
@@ -18,6 +18,15 @@ export async function GET(
   const db = env?.DB
   if (!db) {
     return new Response("Service unavailable", { status: 503 })
+  }
+
+  const rateLimiter = env?.RATE_LIMITER
+  if (rateLimiter) {
+    const ip = request.headers.get("CF-Connecting-IP") ?? "unknown"
+    const { success } = await rateLimiter.limit({ key: ip })
+    if (!success) {
+      return new Response("Too many requests", { status: 429 })
+    }
   }
 
   const row = await db
